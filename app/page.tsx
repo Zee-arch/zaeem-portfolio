@@ -4,6 +4,8 @@ import {
   proofPoints,
   founderCopilot,
   experience,
+  dataProjects,
+  dataIntro,
   principles,
   seeking,
 } from "@/lib/content";
@@ -204,6 +206,58 @@ export default function Home() {
             ))}
           </div>
         </Section>
+
+        {/* ---------------------------------------- data & analytics */}
+        {dataProjects.length > 0 && (
+          <>
+            <div className="my-16 sm:my-20">
+              <Divider />
+            </div>
+
+            <Section eyebrow="Data & analytics">
+              <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
+                {dataIntro}
+              </p>
+              <div className="mt-9 grid gap-x-10 gap-y-9 sm:grid-cols-2">
+                {dataProjects.map((p) => (
+                  <article key={p.title}>
+                    <h3 className="font-display text-lg leading-snug text-ink">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
+                      <span className="text-ink-faint">Asked: </span>
+                      {p.question}
+                    </p>
+                    <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">
+                      <span className="text-ink-faint">Found: </span>
+                      {p.finding}
+                    </p>
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      {p.tools.map((t) => (
+                        <TagPill key={t}>{t}</TagPill>
+                      ))}
+                      {p.source && (
+                        <span className="font-mono text-[11px] text-ink-faint">
+                          {p.source}
+                        </span>
+                      )}
+                    </div>
+                    {p.link && (
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-block font-mono text-xs text-accent underline-offset-4 hover:underline"
+                      >
+                        View it ↗
+                      </a>
+                    )}
+                  </article>
+                ))}
+              </div>
+            </Section>
+          </>
+        )}
 
         <div className="my-16 sm:my-20">
           <Divider />

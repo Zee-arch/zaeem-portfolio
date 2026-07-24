@@ -137,6 +137,47 @@ export const experience = [
   },
 ];
 
+/**
+ * Data & analytics work.
+ *
+ * Deliberately framed around the QUESTION and the FINDING, not the tooling —
+ * "built a Tableau dashboard" is a task, "found that X drove Y" is a result,
+ * and only the second one tells a hiring manager how you think.
+ *
+ * The whole section hides while this array is empty, so it's safe to deploy
+ * before it's filled. Add `link` only for something publicly viewable
+ * (Tableau Public, a GitHub repo, a notebook) — a live link is worth more
+ * than any description, same as the FounderCopilot demo link.
+ */
+export type DataProject = {
+  title: string;
+  /** The question the analysis set out to answer. */
+  question: string;
+  /** What it actually showed — the payoff. */
+  finding: string;
+  tools: string[];
+  /** Optional public URL. Omit rather than linking somewhere private. */
+  link?: string;
+  /** Optional, e.g. "Kaggle — 2.1M rows". Say where the data came from. */
+  source?: string;
+};
+
+export const dataProjects: DataProject[] = [
+  // TODO — add 2-4 entries. Template:
+  // {
+  //   title: "Retail demand seasonality",
+  //   question: "Which product categories actually drive Q4 revenue spikes?",
+  //   finding: "Three categories accounted for most of the lift; the rest
+  //             tracked baseline, so promo spend was going to the wrong shelf.",
+  //   tools: ["SQL", "Tableau"],
+  //   source: "Kaggle — 2.1M rows",
+  //   link: "https://public.tableau.com/...",
+  // },
+];
+
+export const dataIntro =
+  "Self-directed analysis work on public datasets — the querying and visualisation side of the same instinct that runs through everything else here: get to a number you can defend, then say plainly what it does and doesn't show.";
+
 export const principles = [
   {
     label: "Judgment over prompting",
