@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paper — warm off-white, carried over from FounderCopilot's own surface */
+  --color-paper: #f7f5ee;
+  --color-paper-raised: #fffefb;
+  --color-paper-line: #e2ddcd;
+  --color-paper-line-soft: #ece8db;
+
+  /* Ink */
+  --color-ink: #17150f;
+  --color-ink-soft: #55503f; /* 7.4:1 on paper */
+  --color-ink-faint: #6f6a59; /* 5.0:1 on paper — used at 11-12px, so it has
+                                 to clear AA rather than just look muted */
+
+  /* Night — the dark surfaces, same family as the app's report cards */
+  --color-night: #14161c;
+  --color-night-raised: #1c1f27;
+  --color-night-line: #2c303b;
+  --color-night-ink: #eceaf3;
+  --color-night-soft: #b2b3bf; /* 9.0:1 on night */
+  --color-night-faint: #8a8d9c; /* 5.5:1 on night — the previous value was
+                                   3.9:1, which failed AA for body copy */
+
+  /* Single confident accent — the brand violet from FounderCopilot */
+  --color-accent: #4c4ddc;
+  --color-accent-soft: #7071e8;
+  --color-accent-dim: #ebeafc;
+
+  /* Verdict green, matching the live app's GO state */
+  --color-go: #35c48f;
+  --color-shipped: #38765b;
+  --color-shipped-dim: #e6efe9;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", monospace;
+}
+
+/* Fraunces is a variable font with an optical-size axis — dial it toward the
+   display end so headlines get the high-contrast cut, not the text cut.
+   Deliberately no `letter-spacing` here: this rule would outrank Tailwind's
+   `tracking-*` utilities on any element that also uses them. Tracking is set
+   per-element in the markup instead. */
+.font-display {
+  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 100;
+}
+
+body {
+  /* Faint dot field, the same trick the live app uses on its hero. */
+  background-image: radial-gradient(
+    var(--color-paper-line-soft) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* --- Reveal on scroll -------------------------------------------------- */
+/* Progressive enhancement: with no JS and no support, content is simply
+   visible. `.reveal` only hides things once the browser proves it can
+   animate them back in. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      /* `cover`, not `entry`. An `entry` range only completes once the element
+         has fully entered the scrollport, which the last element on a page can
+         never do — the document runs out of scroll first, stranding it at 0%
+         opacity with nowhere left to scroll. `cover` starts the moment the
+         element touches the viewport and finishes a quarter of the way
+         through, so it always resolves to visible. */
+      animation-range: cover 0% cover 25%;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The score ring sweeping up to its value on load. */
+@keyframes sweep {
+  from {
+    stroke-dashoffset: var(--ring-circumference);
+  }
+  to {
+    stroke-dashoffset: var(--ring-offset);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection in the brand violet rather than the browser default blue. */
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
