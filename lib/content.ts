@@ -138,45 +138,83 @@ export const experience = [
 ];
 
 /**
- * Data & analytics work.
+ * Tableau Public dashboards.
  *
- * Deliberately framed around the QUESTION and the FINDING, not the tooling —
- * "built a Tableau dashboard" is a task, "found that X drove Y" is a result,
- * and only the second one tells a hiring manager how you think.
+ * `view` is the Tableau *embed* path (workbook/sheet) — note this differs
+ * from the profile URL you see in the browser. It drives both the embed
+ * `src` and the thumbnail:
+ *   embed     https://public.tableau.com/views/<view>
+ *   thumbnail https://public.tableau.com/thumb/views/<view>
  *
- * The whole section hides while this array is empty, so it's safe to deploy
- * before it's filled. Add `link` only for something publicly viewable
- * (Tableau Public, a GitHub repo, a notebook) — a live link is worth more
- * than any description, same as the FounderCopilot demo link.
+ * TODO — the descriptions below were written from the titles alone. They
+ * describe each dashboard's subject, and deliberately claim nothing about
+ * what the data showed, since that isn't mine to assert. Rewrite them with
+ * the actual finding where you have one; a finding beats a description.
+ *
+ * The whole section hides while this array is empty.
  */
-export type DataProject = {
+export type TableauProject = {
   title: string;
-  /** The question the analysis set out to answer. */
-  question: string;
-  /** What it actually showed — the payoff. */
-  finding: string;
-  tools: string[];
-  /** Optional public URL. Omit rather than linking somewhere private. */
-  link?: string;
-  /** Optional, e.g. "Kaggle — 2.1M rows". Say where the data came from. */
-  source?: string;
+  description: string;
+  /** Embed path: "<workbook>/<sheet>". */
+  view: string;
+  /** The public-facing profile URL, for the "View on Tableau Public" link. */
+  url: string;
+  /**
+   * Locally-hosted preview image. Deliberately NOT hotlinked from
+   * public.tableau.com/thumb/... — that endpoint throttles browser-originated
+   * requests hard enough that the previews render broken. Refresh a preview by
+   * re-downloading it from that URL and committing the file. Omit the field
+   * and the card falls back to a plain panel; it never shows a broken image.
+   */
+  thumb?: string;
 };
 
-export const dataProjects: DataProject[] = [
-  // TODO — add 2-4 entries. Template:
-  // {
-  //   title: "Retail demand seasonality",
-  //   question: "Which product categories actually drive Q4 revenue spikes?",
-  //   finding: "Three categories accounted for most of the lift; the rest
-  //             tracked baseline, so promo spend was going to the wrong shelf.",
-  //   tools: ["SQL", "Tableau"],
-  //   source: "Kaggle — 2.1M rows",
-  //   link: "https://public.tableau.com/...",
-  // },
+export const tableauProjects: TableauProject[] = [
+  {
+    title: "Traffic Analysis — Dashboard",
+    description:
+      "A multi-view dashboard built on traffic volume data, arranged so patterns across time periods and locations can be compared side by side rather than one chart at a time.",
+    view: "Traffic_Analysis1/TrafficDashboard",
+    thumb: "/shots/tableau/traffic-dashboard.png",
+    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/Traffic_Analysis1/TrafficDashboard",
+  },
+  {
+    title: "Traffic Analysis — Detail View",
+    description:
+      "An earlier pass over the same traffic dataset, kept as a single focused worksheet rather than a full dashboard.",
+    view: "Traffic_Analysis_17214236775320/Sheet4",
+    thumb: "/shots/tableau/traffic-detail.png",
+    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/Traffic_Analysis_17214236775320/Sheet4",
+  },
+  {
+    title: "Athens Rental Market",
+    description:
+      "Rental listings across Athens, mapped and segmented so price and availability can be read geographically instead of as a table of numbers.",
+    view: "Athens_rental_visualisation/Dashboard1",
+    thumb: "/shots/tableau/athens-rental.png",
+    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/Athens_rental_visualisation/Dashboard1",
+  },
+  {
+    title: "World Happiness Report",
+    description:
+      "National happiness scores visualised against the contributing factors reported alongside them, so country-level differences can be traced to specific components.",
+    view: "WorldHappiness_Zaeem/Dashboard2",
+    thumb: "/shots/tableau/world-happiness.png",
+    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/WorldHappiness_Zaeem/Dashboard2",
+  },
+  {
+    title: "World Happiness — Exploration",
+    description:
+      "A single-sheet exploration of the same World Happiness dataset, working through how different chart types change what the data appears to say.",
+    view: "MyWorldHappinessDemo_16895957074290/Sheet2",
+    thumb: "/shots/tableau/world-happiness-explore.png",
+    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/MyWorldHappinessDemo_16895957074290/Sheet2",
+  },
 ];
 
-export const dataIntro =
-  "Self-directed analysis work on public datasets — the querying and visualisation side of the same instinct that runs through everything else here: get to a number you can defend, then say plainly what it does and doesn't show.";
+export const tableauIntro =
+  "Self-directed visualisation work on public datasets. Each dashboard below is live and interactive — filter it, hover it, drill into it — or open it full-screen on Tableau Public.";
 
 export const principles = [
   {

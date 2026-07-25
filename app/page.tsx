@@ -4,11 +4,12 @@ import {
   proofPoints,
   founderCopilot,
   experience,
-  dataProjects,
-  dataIntro,
+  tableauProjects,
+  tableauIntro,
   principles,
   seeking,
 } from "@/lib/content";
+import { TableauViz } from "@/components/TableauViz";
 import {
   BrowserFrame,
   Divider,
@@ -39,6 +40,11 @@ export default function Home() {
             <a href="#experience" className="hidden transition-colors hover:text-ink sm:inline">
               Experience
             </a>
+            {tableauProjects.length > 0 && (
+              <a href="#data" className="hidden transition-colors hover:text-ink sm:inline">
+                Data
+              </a>
+            )}
             <a href="#contact" className="transition-colors hover:text-ink">
               Contact
             </a>
@@ -207,51 +213,49 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* ---------------------------------------- data & analytics */}
-        {dataProjects.length > 0 && (
+        {/* ------------------------------------- data visualisation */}
+        {tableauProjects.length > 0 && (
           <>
             <div className="my-16 sm:my-20">
               <Divider />
             </div>
 
-            <Section eyebrow="Data & analytics">
+            <Section
+              id="data"
+              eyebrow="Data visualisation"
+              title="Tableau dashboards, live and interactive."
+            >
               <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
-                {dataIntro}
+                {tableauIntro}
               </p>
-              <div className="mt-9 grid gap-x-10 gap-y-9 sm:grid-cols-2">
-                {dataProjects.map((p) => (
-                  <article key={p.title}>
-                    <h3 className="font-display text-lg leading-snug text-ink">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
-                      <span className="text-ink-faint">Asked: </span>
-                      {p.question}
-                    </p>
-                    <p className="mt-1.5 text-[14.5px] leading-relaxed text-ink-soft">
-                      <span className="text-ink-faint">Found: </span>
-                      {p.finding}
-                    </p>
-                    <div className="mt-3 flex flex-wrap items-center gap-2">
-                      {p.tools.map((t) => (
-                        <TagPill key={t}>{t}</TagPill>
-                      ))}
-                      {p.source && (
-                        <span className="font-mono text-[11px] text-ink-faint">
-                          {p.source}
-                        </span>
-                      )}
-                    </div>
-                    {p.link && (
+
+              <div className="mt-10 space-y-14">
+                {tableauProjects.map((p) => (
+                  <article key={p.view}>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                      <h3 className="font-display text-xl leading-snug text-ink">
+                        {p.title}
+                      </h3>
                       <a
-                        href={p.link}
+                        href={p.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-3 inline-block font-mono text-xs text-accent underline-offset-4 hover:underline"
+                        className="font-mono text-xs text-accent underline-offset-4 hover:underline"
                       >
-                        View it ↗
+                        View on Tableau Public ↗
                       </a>
-                    )}
+                    </div>
+                    <p className="mt-2 max-w-2xl text-[14.5px] leading-relaxed text-ink-soft">
+                      {p.description}
+                    </p>
+                    <div className="mt-5">
+                      <TableauViz
+                        title={p.title}
+                        view={p.view}
+                        url={p.url}
+                        thumb={p.thumb}
+                      />
+                    </div>
                   </article>
                 ))}
               </div>
