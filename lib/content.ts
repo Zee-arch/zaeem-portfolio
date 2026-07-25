@@ -216,6 +216,53 @@ export const tableauProjects: TableauProject[] = [
 export const tableauIntro =
   "Self-directed visualisation work on public datasets. Each dashboard below is live and interactive — filter it, hover it, drill into it — or open it full-screen on Tableau Public.";
 
+/**
+ * SQL learning projects.
+ *
+ * These followed AlexTheAnalyst's MySQL tutorial series rather than being
+ * self-invented — say so plainly. "Followed a well-regarded tutorial, ran
+ * it myself, and can explain every query" is a normal, positive thing to
+ * show; claiming it as untutored original work is the one framing that
+ * would actually damage credibility if noticed; this category of project is
+ * widely recognized in data-analytics hiring.
+ *
+ * `findings` are real numbers, verified by independently re-running the
+ * cleaning + EDA logic against the dataset — not quoted from the tutorial.
+ */
+export type SqlProject = {
+  title: string;
+  description: string;
+  tools: string[];
+  findings: string[];
+  repo: string;
+};
+
+export const sqlProjects: SqlProject[] = [
+  {
+    title: "World Layoffs — Data Cleaning",
+    description:
+      "Cleaned a raw 2,361-row dataset in MySQL: deduplicated with window functions, standardized inconsistent industry and country labels, backfilled missing values via a self-join, and converted a text date column to a real date type.",
+    tools: ["MySQL", "Window functions", "CTEs"],
+    findings: [
+      "Row-level dedup requires partitioning on every column — partitioning on just a few looked right but flagged genuinely distinct layoff rounds as duplicates.",
+    ],
+    repo: "https://github.com/Zee-arch/sql-world-layoffs-analysis",
+  },
+  {
+    title: "World Layoffs — Exploratory Analysis",
+    description:
+      "Queried the cleaned dataset for layoff trends by company, industry, country, and time — including a year-by-year top-3 ranking and a rolling monthly total, both via window functions.",
+    tools: ["MySQL", "Window functions", "CTEs"],
+    findings: [
+      "384,659 layoffs recorded, March 2020 – March 2023 — and January 2023 alone accounts for ~85,000 of that, the single largest monthly spike in the dataset.",
+    ],
+    repo: "https://github.com/Zee-arch/sql-world-layoffs-analysis",
+  },
+];
+
+export const sqlIntro =
+  "Learning projects — I followed AlexTheAnalyst's MySQL tutorial series to build these, on the Kaggle “Layoffs 2022” dataset. Full attribution and the runnable SQL are in the repo.";
+
 export const principles = [
   {
     label: "Judgment over prompting",

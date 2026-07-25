@@ -6,6 +6,8 @@ import {
   experience,
   tableauProjects,
   tableauIntro,
+  sqlProjects,
+  sqlIntro,
   principles,
   seeking,
 } from "@/lib/content";
@@ -256,6 +258,66 @@ export default function Home() {
                         thumb={p.thumb}
                       />
                     </div>
+                  </article>
+                ))}
+              </div>
+            </Section>
+          </>
+        )}
+
+        {/* ---------------------------------------------- sql projects */}
+        {sqlProjects.length > 0 && (
+          <>
+            <div className="my-16 sm:my-20">
+              <Divider />
+            </div>
+
+            <Section
+              id="sql"
+              eyebrow="SQL practice"
+              title="Data cleaning and EDA in MySQL."
+            >
+              <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
+                {sqlIntro}
+              </p>
+
+              <div className="mt-9 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+                {sqlProjects.map((p) => (
+                  <article key={p.title}>
+                    <h3 className="font-display text-lg leading-snug text-ink">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
+                      {p.description}
+                    </p>
+                    {p.findings.length > 0 && (
+                      <ul className="mt-3 space-y-1.5">
+                        {p.findings.map((f) => (
+                          <li
+                            key={f}
+                            className="flex gap-2 text-[13.5px] leading-relaxed text-ink-soft"
+                          >
+                            <span className="mt-1.5 shrink-0 font-mono text-[10px] text-ink-faint">
+                              ▸
+                            </span>
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <div className="mt-3.5 flex flex-wrap items-center gap-2">
+                      {p.tools.map((t) => (
+                        <TagPill key={t}>{t}</TagPill>
+                      ))}
+                    </div>
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3.5 inline-block font-mono text-xs text-accent underline-offset-4 hover:underline"
+                    >
+                      View the SQL on GitHub ↗
+                    </a>
                   </article>
                 ))}
               </div>
