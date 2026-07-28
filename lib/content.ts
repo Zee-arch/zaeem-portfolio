@@ -13,7 +13,7 @@ export const person = {
   role: "Product & Growth · builds what he specs",
 
   // The one line that has to land in three seconds.
-  tagline: "I ran growth and revenue ops for AI companies. Now I ship the products too.",
+  tagline: "Revenue Operations & Sales Ops. Shipped a full-stack AI product solo.",
 
   intro:
     "I spent the last year on both sides of a product — growing one at Vyro, running the revenue engine behind another at Podium. Then I wanted to know whether I could build one. FounderCopilot is the answer: a full-stack AI SaaS, live in production, built solo by directing AI coding tools while I made every product and architecture call myself.",
@@ -100,27 +100,31 @@ export const founderCopilot = {
 
 export const experience = [
   {
-    company: "Vyro / ImagineArt",
-    role: "Growth Associate",
-    period: "2025 — 2026",
+    company: "Podium",
+    role: "Data Enrichment Specialist — Revenue Operations (Contract)",
+    period: "Jul 2025 — Jul 2026",
     summary:
-      "Growth for an AI creative app with a large consumer creator base.",
+      "Revenue operations for a US SaaS sales org selling AI agents to local businesses.",
     bullets: [
-      "Ran the creator community across social platforms for ImagineArt, Vyro's AI image and video product.",
-      "Managed the affiliate program on Rakuten — partner recruitment, tracking, and payout operations.",
-      "Led influencer marketing to bring established AI creators onto the platform.",
+      "Managed the CRM data layer in Salesforce and Salesloft for the sales org; resolved 100+ cross-functional tickets from SDRs, AEs and CSMs relating to CRM data accuracy and reporting.",
+      "Administered Salesforce for the sales org: opportunity splits, appointment-setter and owner assignment, new-hire and promotion enrollments, and maintained critical records including demo logs, appointment data, Rules of Engagement ownership and user setups.",
+      "Expanded the dealer-mapping database from 8,000 to 16,000+ validated accounts via web-based collection and validation, widening coverage across Auto, HVAC and Plumbing verticals.",
+      "Ran QA on recorded sales calls in Gong, including DNC compliance review.",
+      "Executed large-scale data cleaning and enrichment in Excel using Power Query, pivot tables and VLOOKUP; worked with the RevOps team to document recurring data-quality issues feeding future automation design.",
     ],
   },
   {
-    company: "Podium",
-    role: "Sales Operations Specialist (Contract)",
-    period: "2025",
+    company: "ImagineArt",
+    role: "Growth Associate",
+    period: "Mar 2025 — Nov 2025",
     summary:
-      "Revenue operations for a US sales org selling AI agents to local businesses.",
+      "Growth for an AI creative app (Shorts, Avatar, Video Studio) with a large consumer creator base.",
     bullets: [
-      "Administered Salesforce for the sales org: opportunity splits, appointment-setter and owner assignment, new-hire and promotion enrollments.",
-      "Ran QA on recorded sales calls in Gong, including DNC compliance review.",
-      "Built dealer-mapping projects in Excel supporting territory and channel coverage.",
+      "Built and scaled an influencer program for ImagineArt Shorts, Avatar and Video Studio, onboarding 20+ AI/tech creators across YouTube, TikTok, Instagram and LinkedIn.",
+      "Negotiated retainer contracts with creators, reducing CPMs by 25% while holding weekly content output; tracked affiliate links, CTRs, conversions and campaign ROI using Tolt.",
+      "Managed content delivery via Growi.io (20+ daily conversations); ran video calls to close long-term partnerships and directed content strategy across carousels, reels and strategic link placement.",
+      "Oversaw ~$100K influencer spend across H2 2025 and managed a $25K affiliate program across Rakuten, PAP and Tapfiliate, managing 1,200+ affiliates.",
+      "Engineered lead-gen workflows using Phantombuster, Apollo, Hunter.io and ContactFinder across 15+ niche ICPs; executed 100+ daily outreaches and launched Twitter/X outreach for ImagineArt, engaging 50+ AI creators daily.",
     ],
   },
   {
