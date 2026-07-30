@@ -6,6 +6,8 @@ import {
   experience,
   tableauProjects,
   tableauIntro,
+  excelProjects,
+  excelIntro,
   sqlProjects,
   sqlIntro,
   principles,
@@ -18,6 +20,7 @@ import {
   Eyebrow,
   LinkPill,
   PrimaryLink,
+  RichText,
   Section,
   StatusTag,
   TagPill,
@@ -45,6 +48,11 @@ export default function Home() {
             {tableauProjects.length > 0 && (
               <a href="#data" className="hidden transition-colors hover:text-ink sm:inline">
                 Data
+              </a>
+            )}
+            {excelProjects.length > 0 && (
+              <a href="#excel" className="hidden transition-colors hover:text-ink sm:inline">
+                Excel &amp; Power BI
               </a>
             )}
             <a href="#contact" className="transition-colors hover:text-ink">
@@ -258,6 +266,100 @@ export default function Home() {
                         thumb={p.thumb}
                       />
                     </div>
+                  </article>
+                ))}
+              </div>
+            </Section>
+          </>
+        )}
+
+        {/* ------------------------------------- excel & power bi */}
+        {excelProjects.length > 0 && (
+          <>
+            <div className="my-16 sm:my-20">
+              <Divider />
+            </div>
+
+            <Section
+              id="excel"
+              eyebrow="Excel &amp; Power BI"
+              title="A retention analysis, proven three independent ways."
+            >
+              <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
+                {excelIntro}
+              </p>
+
+              <div className="mt-10 space-y-16">
+                {excelProjects.map((p) => (
+                  <article key={p.title}>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                      <h3 className="font-display text-xl leading-snug text-ink">
+                        {p.title}
+                      </h3>
+                      <span className="font-mono text-[11px] text-ink-faint">
+                        {p.period}
+                      </span>
+                    </div>
+                    <p className="mt-2 max-w-2xl font-display text-[16px] leading-snug text-ink-soft">
+                      {p.oneLiner}
+                    </p>
+                    <p className="mt-4 max-w-2xl text-[14.5px] leading-relaxed text-ink-soft">
+                      <RichText>{p.description}</RichText>
+                    </p>
+
+                    {p.findings.length > 0 && (
+                      <ul className="mt-5 space-y-2">
+                        {p.findings.map((f) => (
+                          <li
+                            key={f}
+                            className="flex gap-2.5 text-[13.5px] leading-relaxed text-ink-soft"
+                          >
+                            <span className="mt-1.5 shrink-0 font-mono text-[10px] text-ink-faint">
+                              ▸
+                            </span>
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div className="mt-4 flex flex-wrap items-center gap-2">
+                      {p.tools.map((t) => (
+                        <TagPill key={t}>{t}</TagPill>
+                      ))}
+                    </div>
+
+                    {p.images.length > 0 && (
+                      <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                        {p.images.map((img) => (
+                          <figure
+                            key={img.src}
+                            className="overflow-hidden rounded-xl border border-paper-line bg-white shadow-sm"
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={img.src}
+                              alt={img.alt}
+                              loading="lazy"
+                              className="block w-full"
+                            />
+                            <figcaption className="border-t border-paper-line px-3.5 py-2.5 text-[12px] leading-snug text-ink-faint">
+                              {img.caption}
+                            </figcaption>
+                          </figure>
+                        ))}
+                      </div>
+                    )}
+
+                    {p.links.length > 0 && (
+                      <div className="mt-5 flex flex-wrap gap-3">
+                        {p.links.map((l) => (
+                          <LinkPill key={l.href} href={l.href}>
+                            {l.label} ↓
+                          </LinkPill>
+                        ))}
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>

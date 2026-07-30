@@ -267,6 +267,71 @@ export const sqlProjects: SqlProject[] = [
 export const sqlIntro =
   "Learning projects — I followed AlexTheAnalyst's MySQL tutorial series to build these, on the Kaggle “Layoffs 2022” dataset. Full attribution and the runnable SQL are in the repo.";
 
+/**
+ * Excel → Power BI analytics projects.
+ *
+ * Unlike the SQL tutorials above, this one isn't a followed tutorial — the
+ * dataset is synthetic but purpose-built: retention and expansion behavior
+ * varies deliberately by acquisition-channel × company-size combination, so
+ * the segmentation finding below is real and re-derivable from the data, not
+ * a plausible-sounding claim. Every number in `findings` was independently
+ * cross-checked three ways — a pandas validation script, the Excel formulas,
+ * and the Power BI DAX measures — and they agree to the dollar.
+ */
+export type ExcelProject = {
+  title: string;
+  period: string;
+  oneLiner: string;
+  description: string;
+  tools: string[];
+  findings: string[];
+  images: { src: string; alt: string; caption: string }[];
+  links: { label: string; href: string }[];
+};
+
+export const excelProjects: ExcelProject[] = [
+  {
+    title: "SaaS Subscription Retention & Revenue Analysis",
+    period: "2026",
+    oneLiner:
+      "Which customer segments are worth acquiring more of, and why — a synthetic SaaS dataset taken end-to-end through Excel, a strategy memo, and a live Power BI model.",
+    description:
+      "A 2,046-customer synthetic SaaS dataset (Jan 2023 – Jun 2026), generated with deliberately different retention and expansion profiles by acquisition-channel × company-size combination, so the segmentation story is real and traceable rather than decorative. The Excel workbook builds cohort retention grids, an NRR/GRR bridge, and a segment breakdown entirely on live `SUMIFS`/`COUNTIFS`/`AVERAGEIFS` formulas — nothing pasted as a static value. The same logic is then re-derived as a proper DAX star schema in Power BI, and the strategic read is written up as a 1-page memo aimed at a specific question: where should acquisition budget move, and where does the analysis stop and Finance's unit-economics work begin.",
+    tools: [
+      "Excel (live SUMIFS/COUNTIFS/AVERAGEIFS)",
+      "Power BI (DAX, star schema)",
+      "Python (synthetic dataset generation)",
+    ],
+    findings: [
+      "12-month logo retention ranges from 88.6% (Referral + Enterprise) to 28.4% (Paid Search + SMB) — a 3x spread the blended company-wide number (98.6% GRR / 101.1% NRR) hides completely.",
+      "Revenue retention among surviving cohorts climbs above 100% by month 24 — expansion from accounts that stick around outpaces contraction and churn, even as logo retention keeps declining. The two lines diverging is itself the finding.",
+      "Outbound Sales + Enterprise carries ~32% of current MRR ($420K of $1.32M) at 82% retention — the single largest and one of the healthiest segments in the book, and the one recommendation is explicit not to touch.",
+    ],
+    images: [
+      {
+        src: "/shots/saas-retention/retention-curves.png",
+        alt: "Line chart showing blended logo retention declining from 100% to roughly 40% over 40 months, while blended revenue retention climbs from 100% to over 160%.",
+        caption:
+          "Logo retention decays while revenue retention among survivors climbs past 160% — computed live via a DAX AVERAGEX measure.",
+      },
+      {
+        src: "/shots/saas-retention/segmentation-matrix.png",
+        alt: "Matrix table of 12-month logo retention and total MRR broken out by acquisition channel and company size segment.",
+        caption:
+          "12-month logo retention by acquisition channel × company size — Paid Search+SMB at 28%, Referral+Enterprise at 89%.",
+      },
+    ],
+    links: [
+      { label: "Download the Excel workbook", href: "/files/SaaS_Retention_Analysis.xlsx" },
+      { label: "Read the memo", href: "/files/Segment_Acquisition_Memo.docx" },
+      { label: "Download the Power BI file (.pbix)", href: "/files/SaaS_Retention_Analysis.pbix" },
+    ],
+  },
+];
+
+export const excelIntro =
+  "Built end-to-end from a synthetic dataset — designed with a real segmentation story baked in, then proven three independent ways: Excel formulas, a Python validation script, and Power BI DAX measures, all agreeing to the dollar.";
+
 export const principles = [
   {
     label: "Judgment over prompting",
