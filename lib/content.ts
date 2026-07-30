@@ -10,13 +10,13 @@
 
 export const person = {
   name: "Zaeem Ather",
-  role: "Product & Growth · builds what he specs",
+  role: "Data Analyst · Analytics Engineer",
 
   // The one line that has to land in three seconds.
-  tagline: "Revenue Operations & Sales Ops. Shipped a full-stack AI product solo.",
+  tagline: "Data analysis, with the business context already loaded.",
 
   intro:
-    "I spent the last year on both sides of a product — growing one at Vyro, running the revenue engine behind another at Podium. Then I wanted to know whether I could build one. FounderCopilot is the answer: a full-stack AI SaaS, live in production, built solo by directing AI coding tools while I made every product and architecture call myself.",
+    "I've owned CRM data quality for a US SaaS revenue org and run growth reporting for an AI product — I was the person other people's decisions depended on being right. Now I do the analysis end to end: SQL for the querying, Excel and Power BI for the modelling, Tableau for the visuals. I use AI tooling heavily to move fast, and I'm precise about which parts of a number I can defend and which I can't.",
 
   // Add "· open to remote" here if you want that stated explicitly — left off
   // for now because it's a claim about your availability, not a fact I have.
@@ -49,13 +49,64 @@ export const person = {
   },
 };
 
-/** Verified facts, used as the proof strip under the hero. */
+/**
+ * Verified facts, used as the proof strip under the hero.
+ *
+ * Retargeted for analytics roles — the previous set counted commits and lines
+ * of TypeScript, which proves the wrong thing to someone hiring an analyst.
+ * Every figure here traces to a specific artifact linked further down the page.
+ */
 export const proofPoints = [
-  { value: "Live", label: "in production on Vercel" },
-  { value: "27", label: "commits, 7 merged PRs" },
-  { value: "~4k", label: "lines of TypeScript" },
-  { value: "8", label: "scored factors per report" },
+  { value: "2,046", label: "customer cohort modelled end to end" },
+  { value: "3×", label: "retention spread the average hid" },
+  { value: "16k+", label: "accounts validated in Salesforce" },
+  { value: "5", label: "live Tableau dashboards" },
 ];
+
+/**
+ * Technical skills.
+ *
+ * Each line names the specific thing actually done, not a bare tool name —
+ * "Excel" says nothing, "SUMIFS/COUNTIFS, pivot tables, Power Query" is
+ * checkable against the workbook linked on this page. Anything listed here
+ * has an artifact behind it somewhere on the site.
+ */
+export const skills = [
+  {
+    group: "Querying & analysis",
+    items: [
+      "SQL (MySQL) — window functions, CTEs, self-joins, rolling aggregates",
+      "Excel — SUMIFS/COUNTIFS/AVERAGEIFS, pivot tables, Power Query, VLOOKUP",
+      "Python — pandas, for dataset generation and cross-validating results",
+    ],
+  },
+  {
+    group: "Modelling & BI",
+    items: [
+      "Power BI — DAX measures, star-schema modelling",
+      "Tableau — dashboards, calculated fields, published to Tableau Public",
+      "Cohort retention, NRR/GRR bridges, segmentation analysis",
+    ],
+  },
+  {
+    group: "Revenue systems",
+    items: [
+      "Salesforce — admin, opportunity splits, ownership rules, reporting",
+      "Salesloft, Gong — pipeline tooling and call QA",
+      "CRM data quality, enrichment, and validation at scale",
+    ],
+  },
+];
+
+/**
+ * The AI-leverage note that sits under the skills grid.
+ *
+ * Stated plainly and up front rather than left for an interviewer to discover.
+ * The claim being made is about judgment, not about typing every character —
+ * which is the honest version and also the one these roles actually want.
+ */
+export const skillsNote =
+  "I lean on AI tooling to move quickly — drafting queries, scaffolding models, checking my own work. What I don't delegate is deciding what to measure, whether a number is defensible, and what it means for the decision in front of it. Every headline figure in the retention project below was cross-checked three independent ways before it went on this page.";
 
 export const founderCopilot = {
   name: "FounderCopilot",
@@ -98,19 +149,29 @@ export const founderCopilot = {
   ],
 };
 
+/**
+ * Experience, ordered reverse-chronologically and rewritten to lead with the
+ * data work in each role rather than the job function.
+ *
+ * The two 2024 roles are included specifically because they're analyst work
+ * under a different title — a reporting system built from 13 sources, and a
+ * 100-store retail study — which matters more to an analytics hire than the
+ * seniority of the title they carried. FounderCopilot has its own section
+ * further down and is deliberately not duplicated as a row here.
+ */
 export const experience = [
   {
     company: "Podium",
     role: "Data Enrichment Specialist — Revenue Operations (Contract)",
     period: "Jul 2025 — Jul 2026",
     summary:
-      "Revenue operations for a US SaaS sales org selling AI agents to local businesses.",
+      "Owned the CRM data layer for a US SaaS revenue org selling AI agents to local businesses.",
     bullets: [
-      "Managed the CRM data layer in Salesforce and Salesloft for the sales org; resolved 100+ cross-functional tickets from SDRs, AEs and CSMs relating to CRM data accuracy and reporting.",
-      "Administered Salesforce for the sales org: opportunity splits, appointment-setter and owner assignment, new-hire and promotion enrollments, and maintained critical records including demo logs, appointment data, Rules of Engagement ownership and user setups.",
-      "Expanded the dealer-mapping database from 8,000 to 16,000+ validated accounts via web-based collection and validation, widening coverage across Auto, HVAC and Plumbing verticals.",
-      "Ran QA on recorded sales calls in Gong, including DNC compliance review.",
-      "Executed large-scale data cleaning and enrichment in Excel using Power Query, pivot tables and VLOOKUP; worked with the RevOps team to document recurring data-quality issues feeding future automation design.",
+      "Owned data quality across Salesforce and Salesloft, resolving 100+ accuracy and reporting tickets raised by SDRs, AEs and CSMs — the reporting layer the sales org planned against.",
+      "Grew the dealer-mapping database from 8,000 to 16,000+ validated accounts through structured web collection and validation, widening territory coverage across Auto, HVAC and Plumbing.",
+      "Ran large-scale cleaning and enrichment in Excel — Power Query, pivot tables, VLOOKUP — on the records feeding territory and channel-coverage reporting.",
+      "Administered Salesforce: opportunity splits, appointment-setter and owner assignment, Rules of Engagement ownership, demo and appointment logs, new-hire and promotion enrollments.",
+      "Documented recurring data-quality failure modes with the RevOps team so they could be designed out rather than repeatedly patched; ran call QA in Gong including DNC compliance review.",
     ],
   },
   {
@@ -118,25 +179,44 @@ export const experience = [
     role: "Growth Associate",
     period: "Mar 2025 — Nov 2025",
     summary:
-      "Growth for an AI creative app (Shorts, Avatar, Video Studio) with a large consumer creator base.",
+      "Growth and campaign reporting for an AI creative app (Shorts, Avatar, Video Studio).",
     bullets: [
-      "Built and scaled an influencer program for ImagineArt Shorts, Avatar and Video Studio, onboarding 20+ AI/tech creators across YouTube, TikTok, Instagram and LinkedIn.",
-      "Negotiated retainer contracts with creators, reducing CPMs by 25% while holding weekly content output; tracked affiliate links, CTRs, conversions and campaign ROI using Tolt.",
-      "Managed content delivery via Growi.io (20+ daily conversations); ran video calls to close long-term partnerships and directed content strategy across carousels, reels and strategic link placement.",
-      "Oversaw ~$100K influencer spend across H2 2025 and managed a $25K affiliate program across Rakuten, PAP and Tapfiliate, managing 1,200+ affiliates.",
-      "Engineered lead-gen workflows using Phantombuster, Apollo, Hunter.io and ContactFinder across 15+ niche ICPs; executed 100+ daily outreaches and launched Twitter/X outreach for ImagineArt, engaging 50+ AI creators daily.",
+      "Tracked affiliate links, CTRs, conversions and campaign ROI in Tolt across a $25K affiliate program spanning Rakuten, PAP and Tapfiliate with 1,200+ affiliates.",
+      "Managed ~$100K of influencer spend across H2 2025, negotiating retainer contracts that cut CPMs 25% while holding weekly content output flat.",
+      "Built and scaled an influencer program across Shorts, Avatar and Video Studio, onboarding 20+ AI/tech creators across YouTube, TikTok, Instagram and LinkedIn.",
+      "Engineered lead-generation workflows with Phantombuster, Apollo, Hunter.io and ContactFinder across 15+ niche ICPs.",
     ],
   },
   {
-    company: "Independent",
-    role: "Builder — FounderCopilot",
-    period: "2026",
+    company: "Societal",
+    role: "Co-Founder (Side Venture)",
+    period: "Jun 2024 — May 2025",
     summary:
-      "Designed, specced, and shipped a full-stack AI product solo.",
+      "Product and marketing for a student-event ticketing platform serving university societies across Pakistan.",
     bullets: [
-      "Wrote the product spec, made every architecture call, and directed AI coding tools as the implementation layer.",
-      "Shipped to production on Vercel with real auth, persistence, a provider gateway, and durable rate limiting.",
-      "Ran competitive research across five tools in the category and let the findings set the roadmap.",
+      "Owned product testing and feature definition, speccing enhancements from organizer feedback; processed PKR 3M+ in ticket sales and maintained the sales and transaction records behind it.",
+      "Onboarded societies and event organizers onto digital ticketing, then wound the company down after concluding there was no viable profit structure — the analysis mattered more than the attachment.",
+    ],
+  },
+  {
+    company: "Nestlé",
+    role: "Sales Intern",
+    period: "Jul 2024 — Aug 2024",
+    summary: "Retail execution analysis across the Islamabad region.",
+    bullets: [
+      "Ran a chiller-utilisation study across ~100 retail stores covering 9 chiller sizes and 8 distribution channels against 30+ performance metrics.",
+      "Identified planogram non-compliance, SKU shortages and competitor infiltration through field research across key accounts, mini-marts and super grocers.",
+      "Built the Excel dashboards behind the findings and presented recommendations on retail execution and product placement to the Zonal Head.",
+    ],
+  },
+  {
+    company: "AIESEC in Pakistan",
+    role: "Data Manager",
+    period: "Feb 2024 — Jul 2024",
+    summary: "Centralised financial reporting across 13 local committees.",
+    bullets: [
+      "Consolidated financial data from 13 local committees into a single Excel-based reporting system, producing monthly summaries for national leadership with pivot tables and VLOOKUP.",
+      "Standardised data-entry protocols with local heads and ran training for committee finance leads — fixing the input quality rather than cleaning the same errors every month.",
     ],
   },
 ];
@@ -322,6 +402,7 @@ export const excelProjects: ExcelProject[] = [
       },
     ],
     links: [
+      { label: "View on GitHub", href: "https://github.com/Zee-arch/saas-retention-analysis" },
       { label: "Download the Excel workbook", href: "/files/SaaS_Retention_Analysis.xlsx" },
       { label: "Read the memo", href: "/files/Segment_Acquisition_Memo.docx" },
       { label: "Download the Power BI file (.pbix)", href: "/files/SaaS_Retention_Analysis.pbix" },
@@ -335,24 +416,24 @@ export const excelIntro =
 export const principles = [
   {
     label: "Judgment over prompting",
-    body: "The AI writes the code. I decide the architecture, what gets trusted, and what gets verified independently. That division is the whole job.",
+    body: "AI drafts a lot of my queries and scaffolding. What I keep is deciding what to measure, what to trust, and what to verify independently. That division is the whole job.",
   },
   {
-    label: "Shipped isn't the same as working",
-    body: "A green typecheck proves nothing. Every feature gets opened in a real browser against real infrastructure before I call it done — which is how I found the bugs on the case-study page.",
+    label: "A number isn't right because it computed",
+    body: "Every headline figure in the retention analysis was re-derived three independent ways — Excel formulas, a Python script, and Power BI DAX — before it went anywhere. They agree to the dollar.",
   },
   {
-    label: "Write down what isn't true yet",
-    body: "I keep a running engineering log with an explicit \"what's untested\" section. Naming the gap is what stops it from quietly becoming a claim.",
+    label: "The blended number is usually hiding something",
+    body: "98.6% company-wide retention looked healthy. Split by channel and company size, one segment was at 28%. The average was true and useless at the same time.",
   },
   {
     label: "Refuse to dress up a guess",
-    body: "Estimates get labeled as estimates. A number without a source doesn't render. It cost me features — it's also the reason the output can be trusted.",
+    body: "Estimates get labelled as estimates. A number without a source doesn't ship. It costs me tidier conclusions — it's also the reason the ones I do give can be trusted.",
   },
 ];
 
 /** What I'm looking for — sits above the contact block. */
 export const seeking = {
   headline: "What I'm looking for",
-  body: "Roles where the business context and the product both matter — AI/technical product management, growth and GTM at an AI company, or revenue operations. I'm most useful where someone needs to sit between the people who decide what to build and the people who build it, and be credible to both.",
+  body: "Data analyst, analytics engineering, and product associate roles — where the work is turning messy data into a number someone can act on, and being straight about what it does and doesn't support. I've spent two years as the person whose data other people's decisions ran on. I'm most useful where analysis has to survive contact with a real business call.",
 };

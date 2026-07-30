@@ -2,6 +2,8 @@ import Link from "next/link";
 import {
   person,
   proofPoints,
+  skills,
+  skillsNote,
   founderCopilot,
   experience,
   tableauProjects,
@@ -29,6 +31,15 @@ import {
 const filled = (v: string | null | undefined): v is string =>
   Boolean(v) && !v!.startsWith("TODO");
 
+/**
+ * Section order is the argument this page makes.
+ *
+ * The analytics work leads, because for a data role that's the evidence that
+ * matters; FounderCopilot sits below Experience rather than in the hero slot
+ * it used to occupy, since "shipped a product solo" reads as founder, not
+ * analyst. It's kept — it's the strongest proof of product judgment on here —
+ * just no longer the first thing the page says.
+ */
 export default function Home() {
   return (
     <>
@@ -39,22 +50,24 @@ export default function Home() {
             {person.name}
           </span>
           <div className="flex items-center gap-5 font-mono text-xs text-ink-faint">
-            <a href="#work" className="transition-colors hover:text-ink">
-              Work
-            </a>
+            {excelProjects.length > 0 && (
+              <a href="#analytics" className="transition-colors hover:text-ink">
+                Analytics
+              </a>
+            )}
+            {sqlProjects.length > 0 && (
+              <a href="#sql" className="hidden transition-colors hover:text-ink sm:inline">
+                SQL
+              </a>
+            )}
+            {tableauProjects.length > 0 && (
+              <a href="#data" className="hidden transition-colors hover:text-ink sm:inline">
+                Dashboards
+              </a>
+            )}
             <a href="#experience" className="hidden transition-colors hover:text-ink sm:inline">
               Experience
             </a>
-            {tableauProjects.length > 0 && (
-              <a href="#data" className="hidden transition-colors hover:text-ink sm:inline">
-                Data
-              </a>
-            )}
-            {excelProjects.length > 0 && (
-              <a href="#excel" className="hidden transition-colors hover:text-ink sm:inline">
-                Excel &amp; Power BI
-              </a>
-            )}
             <a href="#contact" className="transition-colors hover:text-ink">
               Contact
             </a>
@@ -89,7 +102,7 @@ export default function Home() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <PrimaryLink href="#work">See the work ↓</PrimaryLink>
+            <PrimaryLink href="#analytics">See the analysis ↓</PrimaryLink>
             <LinkPill href={person.links.linkedin}>LinkedIn</LinkPill>
             <LinkPill href={person.links.email}>Email</LinkPill>
             <LinkPill href={person.links.resume}>Download CV</LinkPill>
@@ -113,177 +126,15 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </main>
 
-      {/* ---------------------------------------------------- flagship */}
-      <section id="work" className="reveal mt-20 scroll-mt-20 bg-night py-16 sm:mt-28 sm:py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="flex flex-wrap items-center gap-3">
-            <Eyebrow tone="night">Flagship project</Eyebrow>
-            <StatusTag>{founderCopilot.status}</StatusTag>
-            <span className="font-mono text-[11px] text-night-faint">
-              {founderCopilot.period}
-            </span>
-          </div>
-
-          <div className="mt-6 grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-14">
-            <div>
-              <h2 className="font-display text-3xl text-night-ink sm:text-4xl">
-                {founderCopilot.name}
-              </h2>
-              <p className="mt-3 max-w-lg font-display text-lg leading-snug text-night-soft">
-                {founderCopilot.oneLiner}
-              </p>
-              <p className="mt-6 max-w-lg text-[15px] leading-[1.75] text-night-soft">
-                {founderCopilot.pitch}
-              </p>
-
-              <div className="mt-7 flex flex-wrap gap-2">
-                {founderCopilot.tags.map((tag) => (
-                  <TagPill key={tag} tone="night">
-                    {tag}
-                  </TagPill>
-                ))}
-              </div>
-
-              <dl className="mt-9 space-y-5 border-t border-night-line pt-7">
-                {founderCopilot.highlights.map((h) => (
-                  <div key={h.claim}>
-                    <dt className="flex gap-2.5 font-display text-[15px] text-night-ink">
-                      <span className="mt-px shrink-0 font-mono text-accent-soft">
-                        →
-                      </span>
-                      {h.claim}
-                    </dt>
-                    <dd className="mt-1.5 pl-6 text-[13.5px] leading-relaxed text-night-soft">
-                      {h.detail}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Link
-                  href="/work/founder-copilot"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-mono text-xs text-white transition-colors hover:bg-accent-soft"
-                >
-                  Read the full case study →
-                </Link>
-                <LinkPill href={person.links.live} tone="night">
-                  Live app ↗
-                </LinkPill>
-                <LinkPill href={person.links.github} tone="night">
-                  GitHub ↗
-                </LinkPill>
-              </div>
-            </div>
-
-            <div className="lg:sticky lg:top-24">
-              <BrowserFrame
-                src="/shots/fc-landing.png"
-                alt="The FounderCopilot landing page, showing the idea input and an example validation report scoring 78 out of 100 with a GO verdict."
-                url="founder-copilot-flame.vercel.app"
-              />
-              <p className="mt-3 font-mono text-[11px] text-night-faint">
-                The live product, captured from production.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <main className="mx-auto max-w-5xl px-6">
-        {/* ---------------------------------------------- experience */}
-        <Section id="experience" eyebrow="Experience" className="pt-20 sm:pt-28">
-          <div className="mt-8 space-y-11">
-            {experience.map((job) => (
-              <div key={job.company} className="grid gap-3 sm:grid-cols-[7.5rem_1fr] sm:gap-8">
-                <p className="font-mono text-xs leading-6 text-ink-faint">
-                  {job.period}
-                </p>
-                <div>
-                  <h3 className="font-display text-xl text-ink">{job.role}</h3>
-                  <p className="mt-0.5 text-sm text-ink-faint">
-                    {job.company} — {job.summary}
-                  </p>
-                  <ul className="mt-3.5 space-y-2">
-                    {job.bullets.map((b) => (
-                      <li
-                        key={b}
-                        className="flex gap-2.5 text-[14.5px] leading-relaxed text-ink-soft"
-                      >
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-paper-line" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        {/* ------------------------------------- data visualisation */}
-        {tableauProjects.length > 0 && (
-          <>
-            <div className="my-16 sm:my-20">
-              <Divider />
-            </div>
-
-            <Section
-              id="data"
-              eyebrow="Data visualisation"
-              title="Tableau dashboards, live and interactive."
-            >
-              <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
-                {tableauIntro}
-              </p>
-
-              <div className="mt-10 space-y-14">
-                {tableauProjects.map((p) => (
-                  <article key={p.view}>
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                      <h3 className="font-display text-xl leading-snug text-ink">
-                        {p.title}
-                      </h3>
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-xs text-accent underline-offset-4 hover:underline"
-                      >
-                        View on Tableau Public ↗
-                      </a>
-                    </div>
-                    <p className="mt-2 max-w-2xl text-[14.5px] leading-relaxed text-ink-soft">
-                      {p.description}
-                    </p>
-                    <div className="mt-5">
-                      <TableauViz
-                        title={p.title}
-                        view={p.view}
-                        url={p.url}
-                        thumb={p.thumb}
-                      />
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </Section>
-          </>
-        )}
-
-        {/* ------------------------------------- excel & power bi */}
+        {/* ----------------------------- analytics: excel & power bi */}
         {excelProjects.length > 0 && (
           <>
-            <div className="my-16 sm:my-20">
-              <Divider />
-            </div>
-
             <Section
-              id="excel"
-              eyebrow="Excel &amp; Power BI"
+              id="analytics"
+              eyebrow="Analytics"
               title="A retention analysis, proven three independent ways."
+              className="pt-20 sm:pt-28"
             >
               <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
                 {excelIntro}
@@ -355,7 +206,7 @@ export default function Home() {
                       <div className="mt-5 flex flex-wrap gap-3">
                         {p.links.map((l) => (
                           <LinkPill key={l.href} href={l.href}>
-                            {l.label} ↓
+                            {l.label} {l.href.startsWith("/files/") ? "↓" : "↗"}
                           </LinkPill>
                         ))}
                       </div>
@@ -376,7 +227,7 @@ export default function Home() {
 
             <Section
               id="sql"
-              eyebrow="SQL practice"
+              eyebrow="SQL"
               title="Data cleaning and EDA in MySQL."
             >
               <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
@@ -427,12 +278,188 @@ export default function Home() {
           </>
         )}
 
+        {/* ------------------------------------- data visualisation */}
+        {tableauProjects.length > 0 && (
+          <>
+            <div className="my-16 sm:my-20">
+              <Divider />
+            </div>
+
+            <Section
+              id="data"
+              eyebrow="Dashboards"
+              title="Tableau dashboards, live and interactive."
+            >
+              <p className="mt-5 max-w-2xl text-[15px] leading-[1.75] text-ink-soft">
+                {tableauIntro}
+              </p>
+
+              <div className="mt-10 space-y-14">
+                {tableauProjects.map((p) => (
+                  <article key={p.view}>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                      <h3 className="font-display text-xl leading-snug text-ink">
+                        {p.title}
+                      </h3>
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono text-xs text-accent underline-offset-4 hover:underline"
+                      >
+                        View on Tableau Public ↗
+                      </a>
+                    </div>
+                    <p className="mt-2 max-w-2xl text-[14.5px] leading-relaxed text-ink-soft">
+                      {p.description}
+                    </p>
+                    <div className="mt-5">
+                      <TableauViz
+                        title={p.title}
+                        view={p.view}
+                        url={p.url}
+                        thumb={p.thumb}
+                      />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </Section>
+          </>
+        )}
+
         <div className="my-16 sm:my-20">
           <Divider />
         </div>
 
+        {/* ------------------------------------------------- skills */}
+        <Section id="skills" eyebrow="Toolkit" title="What I work in.">
+          <div className="mt-8 grid gap-x-10 gap-y-9 sm:grid-cols-3">
+            {skills.map((group) => (
+              <div key={group.group}>
+                <h3 className="font-display text-lg text-ink">{group.group}</h3>
+                <ul className="mt-3 space-y-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-2 text-[13.5px] leading-relaxed text-ink-soft"
+                    >
+                      <span className="mt-1.5 shrink-0 font-mono text-[10px] text-ink-faint">
+                        ▸
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-9 max-w-2xl border-l-2 border-paper-line pl-5 text-[14.5px] leading-[1.75] text-ink-soft">
+            {skillsNote}
+          </p>
+        </Section>
+
+        <div className="my-16 sm:my-20">
+          <Divider />
+        </div>
+
+        {/* ---------------------------------------------- experience */}
+        <Section id="experience" eyebrow="Experience">
+          <div className="mt-8 space-y-11">
+            {experience.map((job) => (
+              <div key={job.company} className="grid gap-3 sm:grid-cols-[7.5rem_1fr] sm:gap-8">
+                <p className="font-mono text-xs leading-6 text-ink-faint">
+                  {job.period}
+                </p>
+                <div>
+                  <h3 className="font-display text-xl text-ink">{job.role}</h3>
+                  <p className="mt-0.5 text-sm text-ink-faint">
+                    {job.company} — {job.summary}
+                  </p>
+                  <ul className="mt-3.5 space-y-2">
+                    {job.bullets.map((b) => (
+                      <li
+                        key={b}
+                        className="flex gap-2.5 text-[14.5px] leading-relaxed text-ink-soft"
+                      >
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-paper-line" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      </main>
+
+      {/* ------------------------------------- founder copilot (demoted) */}
+      <section id="work" className="reveal mt-20 scroll-mt-20 bg-night py-14 sm:mt-28 sm:py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex flex-wrap items-center gap-3">
+            <Eyebrow tone="night">Product &amp; engineering</Eyebrow>
+            <StatusTag>{founderCopilot.status}</StatusTag>
+            <span className="font-mono text-[11px] text-night-faint">
+              {founderCopilot.period}
+            </span>
+          </div>
+
+          <div className="mt-6 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
+            <div>
+              <h2 className="font-display text-2xl text-night-ink sm:text-3xl">
+                {founderCopilot.name}
+              </h2>
+              <p className="mt-3 max-w-lg font-display text-[17px] leading-snug text-night-soft">
+                {founderCopilot.oneLiner}
+              </p>
+              <p className="mt-5 max-w-lg text-[14.5px] leading-[1.75] text-night-soft">
+                Not analytics work — but it&rsquo;s the clearest evidence I can
+                point to for product judgment. I wrote the spec, made every
+                architecture call, and shipped it to production; the verdict
+                score is computed in code rather than asked of the model, and an
+                unsourced figure has no valid shape in the type system.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {founderCopilot.tags.slice(0, 5).map((tag) => (
+                  <TagPill key={tag} tone="night">
+                    {tag}
+                  </TagPill>
+                ))}
+              </div>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="/work/founder-copilot"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 font-mono text-xs text-white transition-colors hover:bg-accent-soft"
+                >
+                  Read the case study →
+                </Link>
+                <LinkPill href={person.links.live} tone="night">
+                  Live app ↗
+                </LinkPill>
+                <LinkPill href={person.links.github} tone="night">
+                  GitHub ↗
+                </LinkPill>
+              </div>
+            </div>
+
+            <div>
+              <BrowserFrame
+                src="/shots/fc-landing.png"
+                alt="The FounderCopilot landing page, showing the idea input and an example validation report scoring 78 out of 100 with a GO verdict."
+                url="founder-copilot-flame.vercel.app"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-5xl px-6">
         {/* --------------------------------------------- how I work */}
-        <Section eyebrow="How I work" title="Four rules I actually held to.">
+        <Section eyebrow="How I work" title="Four rules I actually held to." className="pt-20 sm:pt-28">
           <div className="mt-8 grid gap-x-10 gap-y-9 sm:grid-cols-2">
             {principles.map((p) => (
               <div key={p.label}>
@@ -504,7 +531,7 @@ export default function Home() {
       <footer className="border-t border-paper-line">
         <div className="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 font-mono text-[11px] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} {person.name}</span>
-          <span>Built with Next.js — the same stack as the project above.</span>
+          <span>Built with Next.js — the same stack as FounderCopilot.</span>
         </div>
       </footer>
     </>

@@ -66,7 +66,8 @@ export default function Image() {
               color: "#55503f",
             }}
           >
-            FounderCopilot — a full-stack AI SaaS, live in production.
+            Cohort retention, segmentation, and the reporting behind revenue
+            decisions.
           </div>
         </div>
 
@@ -88,9 +89,11 @@ export default function Image() {
               color: "#38765b",
             }}
           >
-            SHIPPED
+            OPEN TO WORK
           </div>
-          <div style={{ display: "flex" }}>Next.js · TypeScript · Supabase · Vercel</div>
+          {/* The stack a data hire is scanning for — not the one this site
+              happens to be built in. */}
+          <div style={{ display: "flex" }}>SQL · Python · Excel · Power BI · Tableau</div>
         </div>
       </div>
     ),
