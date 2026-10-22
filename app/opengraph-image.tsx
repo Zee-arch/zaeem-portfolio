@@ -66,8 +66,7 @@ export default function Image() {
               color: "#55503f",
             }}
           >
-            Cohort retention, segmentation, and the reporting behind revenue
-            decisions.
+            Sales operations, partnerships and sponsorships. NUST BBA.
           </div>
         </div>
 
@@ -91,9 +90,7 @@ export default function Image() {
           >
             OPEN TO WORK
           </div>
-          {/* The stack a data hire is scanning for — not the one this site
-              happens to be built in. */}
-          <div style={{ display: "flex" }}>SQL · Python · Excel · Power BI · Tableau</div>
+          <div style={{ display: "flex" }}>Ex-Podium · ImagineArt · Nestlé · AIESEC</div>
         </div>
       </div>
     ),

@@ -1,113 +1,253 @@
 /**
  * Everything the site says about Zaeem lives here.
  *
- * ─────────────────────────────────────────────────────────────────────────
- *  BEFORE YOU DEPLOY — fill in the five values marked `TODO`.
- *  Everything else is real and verified against the FounderCopilot repo,
- *  its git history, and the live deployment.
- * ─────────────────────────────────────────────────────────────────────────
+ * Positioned for management-trainee, commercial / sales-operations and growth
+ * roles at large Pakistani companies (Oct 2026).
+ *
+ * Source of truth: Zaeem's LinkedIn (linkedin.com/in/zaeem-ather) plus his
+ * own answers, Oct 2026. Rule for every line on this site: if he can't
+ * explain it in an interview from memory, it doesn't go on the page.
+ * Personal figures are kept separate from team totals.
  */
 
 export const person = {
   name: "Zaeem Ather",
-  role: "Data Analyst · Analytics Engineer",
+  role: "Commercial · Sales Operations · Partnerships",
 
-  // The one line that has to land in three seconds.
-  tagline: "Data analysis, with the business context already loaded.",
+  tagline: "I've sold, sourced sponsors, cleaned the CRM and walked the stores.",
 
   intro:
-    "I've owned CRM data quality for a US SaaS revenue org and run growth reporting for an AI product — I was the person other people's decisions depended on being right. Now I do the analysis end to end: SQL for the querying, Excel and Power BI for the modelling, Tableau for the visuals. I use AI tooling heavily to move fast, and I'm precise about which parts of a number I can defend and which I can't.",
+    "NUST business graduate with two years of commercial work: sales operations for a US software company, growth and creator partnerships for an AI product, a student ticketing start-up I co-founded and later shut down, and a Nestlé field internship. At university I raised sponsorships for NUST's biggest events by meeting senior people at telecom, banking and real-estate companies in Islamabad. I'm looking for a management trainee or commercial role where that mix is useful.",
 
-  // Add "· open to remote" here if you want that stated explicitly — left off
-  // for now because it's a claim about your availability, not a fact I have.
-  location: "Islamabad / Rawalpindi, Pakistan",
+  location: "Islamabad, Pakistan · open to roles anywhere in Pakistan",
 
   links: {
-    live: "https://founder-copilot-flame.vercel.app",
-    github: "https://github.com/Zee-arch/founder-copilot",
-    githubProfile: "https://github.com/Zee-arch",
     linkedin: "https://linkedin.com/in/zaeem-ather",
     email: "mailto:zaeemather7@gmail.com",
     emailLabel: "zaeemather7@gmail.com",
-    // TODO — drop your CV into `public/` and set this to its path, e.g.
-    // "/zaeem-ather-cv.pdf". Left as null, the download button just doesn't
-    // render — nothing breaks.
+    // Set to e.g. "/zaeem-ather-cv.pdf" once the master CV is in public/.
+    // Left as null, the download button doesn't render.
     resume: null as string | null,
+    // Used only by the FounderCopilot case-study page, which is no longer
+    // linked from the homepage.
+    live: "https://founder-copilot-flame.vercel.app",
+    github: "https://github.com/Zee-arch/founder-copilot",
+    githubProfile: "https://github.com/Zee-arch",
   },
 
-  // TODO — drop a headshot into `public/` and set this to its path, e.g.
-  // "/zaeem.jpg". Anything roughly square works; it renders at 112px.
-  // Left as null, the hero lays out without it — nothing breaks.
+  // Set to e.g. "/zaeem.jpg" once a headshot is in public/. Renders at 112px.
   photo: null as string | null,
 
   education: {
-    degree: "BBA with Computer Science",
+    degree: "BBA, with a minor in Computer Science",
     institution: "NUST — National University of Sciences and Technology",
-    // TODO (optional) — add your years, e.g. "2020 — 2024". The row lays out
-    // without it, so leaving this as-is is fine.
-    period: "TODO_YEARS",
+    period: "Nov 2021 — May 2025",
   },
 };
 
-/**
- * Verified facts, used as the proof strip under the hero.
- *
- * Retargeted for analytics roles — the previous set counted commits and lines
- * of TypeScript, which proves the wrong thing to someone hiring an analyst.
- * Every figure here traces to a specific artifact linked further down the page.
- */
+/** Proof strip under the hero. Every figure is his own, not a team total. */
 export const proofPoints = [
-  { value: "2,046", label: "customer cohort modelled end to end" },
-  { value: "3×", label: "retention spread the average hid" },
-  { value: "16k+", label: "accounts validated in Salesforce" },
-  { value: "5", label: "live Tableau dashboards" },
+  { value: "16,000+", label: "dealer accounts validated for Podium's sales team (from 8,000)" },
+  { value: "PKR 3M+", label: "ticket sales processed at Societal, the start-up I co-founded" },
+  { value: "~PKR 2M", label: "in sponsorships I brought in personally, across ~50 meetings" },
+  { value: "~100", label: "retail stores in Nestlé's chiller-utilisation study" },
 ];
 
-/**
- * Technical skills.
- *
- * Each line names the specific thing actually done, not a bare tool name —
- * "Excel" says nothing, "SUMIFS/COUNTIFS, pivot tables, Power Query" is
- * checkable against the workbook linked on this page. Anything listed here
- * has an artifact behind it somewhere on the site.
- */
+export type Job = {
+  company: string;
+  role: string;
+  period: string;
+  summary: string;
+  bullets: string[];
+};
+
+/** Reverse-chronological. Titles and dates match LinkedIn exactly. */
+export const experience: Job[] = [
+  {
+    company: "Podium (US, remote)",
+    role: "Sales Operations Associate",
+    period: "Jul 2025 — Jul 2026",
+    summary:
+      "Sales operations for a US software company selling AI agents to local businesses. Joined part-time alongside ImagineArt; full-time from Nov 2025.",
+    bullets: [
+      "Kept Salesforce and Salesloft records accurate for the sales and customer success teams — opportunity splits, owner assignment, demo and appointment logs, new-hire setups.",
+      "Resolved 100+ data and reporting requests from sales reps, account executives and customer success managers.",
+      "Doubled the dealer-mapping database from 8,000 to 16,000+ validated accounts, widening sales coverage in Auto, HVAC and Plumbing.",
+      "Reviewed recorded sales calls in Gong for quality and Do-Not-Call compliance, and flagged recurring data-quality problems to the RevOps team.",
+    ],
+  },
+  {
+    company: "ImagineArt (by Vyro), Islamabad",
+    role: "Growth Associate",
+    period: "Mar 2025 — Nov 2025",
+    summary: "Growth and creator partnerships for an AI creative platform.",
+    bullets: [
+      "Built and ran an influencer programme for the video and avatar products — 20+ AI/tech creators onboarded across YouTube, TikTok, Instagram and LinkedIn.",
+      "Spent around $70K of the company's influencer budget across 15–20 campaigns, and negotiated retainer contracts that brought CPMs down by about 25%.",
+      "Ran a $25K affiliate programme across Rakuten, PAP and Tapfiliate with 1,200+ affiliates, tracking clicks, conversions and return.",
+      "Closed long-term creator partnerships through daily calls and outreach; built lead lists with Apollo, Phantombuster and Hunter.io across 15+ niches.",
+    ],
+  },
+  {
+    company: "Societal, Islamabad",
+    role: "Co-Founder (side venture)",
+    period: "Jun 2024 — May 2025",
+    summary: "A ticketing platform for university society events across Pakistan.",
+    bullets: [
+      "Ran marketing and product — onboarded societies and event organisers onto digital ticketing, and specced new features from organiser feedback.",
+      "Processed PKR 3M+ in ticket sales and kept the sales and transaction records.",
+      "Shut the company down after concluding there was no viable profit structure.",
+    ],
+  },
+  {
+    company: "BoostHive, Islamabad",
+    role: "Business Development Executive",
+    period: "Aug 2024 — Nov 2024",
+    summary: "Outbound sales of Amazon marketing services to UK and US sellers.",
+    bullets: [
+      "Made 150+ cold calls a day to Amazon store owners, pitching ad campaigns, product launches and A+ content.",
+      "Took leads from first call through to contract negotiation, tracking pipeline in the CRM.",
+    ],
+  },
+  {
+    company: "Nestlé Pakistan, Islamabad",
+    role: "Sales Intern",
+    period: "Jul 2024 — Aug 2024",
+    summary: "Retail execution and trade marketing in the Islamabad region.",
+    bullets: [
+      "Analysed chiller utilisation across ~100 retail stores, 9 chiller sizes and 8 distribution channels using 30+ performance metrics.",
+      "Visited key accounts, mini-marts, super grocers and 4 distribution hubs; found planogram non-compliance, SKU shortages and competitor stock in Nestlé chillers.",
+      "Presented findings and product-placement recommendations to the Zonal Head.",
+    ],
+  },
+  {
+    company: "AIESEC in Pakistan",
+    role: "Marketing Team Lead → Partnerships Manager → Sales Team Lead & Data Manager",
+    period: "Feb 2023 — Jul 2024",
+    summary: "Four roles over a year and a half in the student-run exchange organisation.",
+    bullets: [
+      "Marketing Team Lead: led a team of 3 to 413 recruitment and 364 exchange sign-ups.",
+      "Partnerships Manager: led a team of 4 targeting 55+ companies in the National Science & Technology Park, pitching and onboarding partners.",
+      "Sales Team Lead: led a team of 5 on outbound sales for exchange programmes; 4 placements; trained the team on objection handling.",
+      "Data Manager: brought financial data from 13 local committees into one Excel reporting system for national leadership.",
+    ],
+  },
+];
+
+/** University leadership and sponsorship work. Personal vs team figures kept apart. */
+export const leadership = {
+  intro:
+    "Most of my sponsorship experience comes from NUST's flagship student events. My job was to walk into companies, often in Blue Area, and get director- and VP-level people at telecoms, banks and real-estate firms to put money, print or media support behind a student event.",
+  stats: [
+    { value: "~PKR 2M", label: "brought in personally" },
+    { value: "~50", label: "sponsor meetings, alone or with my team" },
+    { value: "PKR 15M+", label: "raised by the sponsorship teams I was part of" },
+  ],
+  roles: [
+    {
+      title: "Director of Sponsorships",
+      org: "NUST Olympiad",
+      period: "2024",
+    },
+    {
+      title: "Director of Sponsorships",
+      org: "NUST Science Society",
+      period: "2024",
+    },
+    {
+      title: "Director of Sponsorships",
+      org: "NUST Literary Festival",
+      period: "2023",
+    },
+    {
+      title: "Vice President Outreach",
+      org: "NUST Alumni Homecoming",
+      period: "2023",
+      note: "Led two teams: external relations, who brought in the guests, and sponsorships, who brought in monetary, print and media sponsors.",
+    },
+    {
+      title: "Outreach Manager",
+      org: "HAAMI NUST",
+      period: "Nov — Dec 2024",
+      note: "Outreach for a campaign that raised PKR 3M in donations and PKR 1.5M in sponsorships for underprivileged students.",
+    },
+  ],
+  extras:
+    "Also helped Student Affairs and the NUST Placement Office run two job fairs (2023, 2024), and was a campus ambassador for Devsinc, Career Pakistan and Linkstar.",
+};
+
+/** Things he'd happily be asked about in an interview. Facts only. */
+export const stories = [
+  {
+    title: "Shutting down my own company",
+    body: "Societal processed over PKR 3M in ticket sales, and I still closed it. Sales volume isn't the same as a business that makes money, and we couldn't find a viable profit structure. Deciding to stop was harder than anything I did building it.",
+  },
+  {
+    title: "What a chiller tells you",
+    body: "At Nestlé I went store to store across ~100 outlets checking how chillers were actually used: the wrong products on the shelves, missing SKUs, competitor stock inside Nestlé chillers. The report I took to the Zonal Head came from what I saw in the stores, not from a spreadsheet alone.",
+  },
+  {
+    title: "Getting CPMs down",
+    body: "At ImagineArt I negotiated retainer contracts with our creators. Weekly content output held steady while the cost per thousand views fell by about a quarter.",
+  },
+];
+
+/** Tools, stated at the level he actually uses them. */
 export const skills = [
   {
-    group: "Querying & analysis",
+    group: "Sales & CRM",
     items: [
-      "SQL (MySQL) — window functions, CTEs, self-joins, rolling aggregates",
-      "Excel — SUMIFS/COUNTIFS/AVERAGEIFS, pivot tables, Power Query, VLOOKUP",
-      "Python — pandas, for dataset generation and cross-validating results",
+      "Salesforce, Salesloft — daily use at Podium",
+      "Gong — call review and compliance",
+      "Apollo, Phantombuster, Hunter.io — lead sourcing",
     ],
   },
   {
-    group: "Modelling & BI",
+    group: "Growth & partnerships",
     items: [
-      "Power BI — DAX measures, star-schema modelling",
-      "Tableau — dashboards, calculated fields, published to Tableau Public",
-      "Cohort retention, NRR/GRR bridges, segmentation analysis",
+      "Influencer and creator programmes",
+      "Affiliate networks — Rakuten, PAP, Tapfiliate",
+      "Sponsorship pitching and negotiation",
     ],
   },
   {
-    group: "Revenue systems",
+    group: "Data",
     items: [
-      "Salesforce — admin, opportunity splits, ownership rules, reporting",
-      "Salesloft, Gong — pipeline tooling and call QA",
-      "CRM data quality, enrichment, and validation at scale",
+      "Google Sheets — my everyday tool",
+      "Excel — pivot tables, VLOOKUP",
+      "SQL — foundations, DataCamp certified",
     ],
   },
 ];
 
-/**
- * The AI-leverage note that sits under the skills grid.
- *
- * Stated plainly and up front rather than left for an interviewer to discover.
- * The claim being made is about judgment, not about typing every character —
- * which is the honest version and also the one these roles actually want.
- */
-export const skillsNote =
-  "I lean on AI tooling to move quickly — drafting queries, scaffolding models, checking my own work. What I don't delegate is deciding what to measure, whether a number is defensible, and what it means for the decision in front of it. Every headline figure in the retention project below was cross-checked three independent ways before it went on this page.";
+export const principles = [
+  {
+    label: "Go and look",
+    body: "The Nestlé findings came from standing in front of the chillers, not from the dashboard. I'd rather visit the store, take the meeting or listen to the call.",
+  },
+  {
+    label: "Fix the input, not just the output",
+    body: "At AIESEC I standardised how 13 committees entered data instead of cleaning the same errors every month. At Podium I flagged recurring problems to RevOps for the same reason.",
+  },
+  {
+    label: "Stop when the numbers say stop",
+    body: "I shut down a company I co-founded because the economics didn't work. I'd rather say that out loud than pretend it was a pivot.",
+  },
+  {
+    label: "Separate my number from the team's",
+    body: "The sponsorship teams I was in raised PKR 15M+. My share was about PKR 2M. Both are true, and I'll always tell you which is which.",
+  },
+];
 
+export const seeking = {
+  headline: "What I'm looking for",
+  body: "Management trainee programmes, and commercial, sales-operations or growth roles at established companies in Pakistan: FMCG, telecom, fintech, tech. On-site or hybrid, anywhere in the country. I want a role where I'm out talking to customers and partners as much as I'm working on the numbers.",
+};
+
+/* ───────────────────────────────────────────────────────────────────────────
+ * FounderCopilot — kept only because the case-study page at
+ * /work/founder-copilot still imports it. Not linked from the homepage.
+ * ─────────────────────────────────────────────────────────────────────────── */
 export const founderCopilot = {
   name: "FounderCopilot",
   status: "SHIPPED",
@@ -128,8 +268,6 @@ export const founderCopilot = {
   pitch:
     "Type an idea in one sentence. FounderCopilot scores it across 8 independent factors, computes a GO / REFINE / PIVOT verdict in code, and generates a 7-part report — market sizing, financials, roadmap, competitors, a customer-validation kit, a build brief, and a full prose write-up. Real accounts, a saved-report dashboard, PDF export, live on Vercel.",
 
-  // The three lines that separate "used AI to make an app" from
-  // "understood what I was shipping."
   highlights: [
     {
       claim: "The verdict is computed, not asked for",
@@ -147,293 +285,4 @@ export const founderCopilot = {
         "A serverless timeout killing requests mid-generation, a case-sensitive env var silently breaking prod, a merge that quietly restored false UI claims — each found by checking the live site, not by trusting a green build.",
     },
   ],
-};
-
-/**
- * Experience, ordered reverse-chronologically and rewritten to lead with the
- * data work in each role rather than the job function.
- *
- * The two 2024 roles are included specifically because they're analyst work
- * under a different title — a reporting system built from 13 sources, and a
- * 100-store retail study — which matters more to an analytics hire than the
- * seniority of the title they carried. FounderCopilot has its own section
- * further down and is deliberately not duplicated as a row here.
- */
-export const experience = [
-  {
-    company: "Podium",
-    role: "Data Enrichment Specialist — Revenue Operations (Contract)",
-    period: "Jul 2025 — Jul 2026",
-    summary:
-      "Owned the CRM data layer for a US SaaS revenue org selling AI agents to local businesses.",
-    bullets: [
-      "Owned data quality across Salesforce and Salesloft, resolving 100+ accuracy and reporting tickets raised by SDRs, AEs and CSMs — the reporting layer the sales org planned against.",
-      "Grew the dealer-mapping database from 8,000 to 16,000+ validated accounts through structured web collection and validation, widening territory coverage across Auto, HVAC and Plumbing.",
-      "Ran large-scale cleaning and enrichment in Excel — Power Query, pivot tables, VLOOKUP — on the records feeding territory and channel-coverage reporting.",
-      "Administered Salesforce: opportunity splits, appointment-setter and owner assignment, Rules of Engagement ownership, demo and appointment logs, new-hire and promotion enrollments.",
-      "Documented recurring data-quality failure modes with the RevOps team so they could be designed out rather than repeatedly patched; ran call QA in Gong including DNC compliance review.",
-    ],
-  },
-  {
-    company: "ImagineArt",
-    role: "Growth Associate",
-    period: "Mar 2025 — Nov 2025",
-    summary:
-      "Growth and campaign reporting for an AI creative app (Shorts, Avatar, Video Studio).",
-    bullets: [
-      "Tracked affiliate links, CTRs, conversions and campaign ROI in Tolt across a $25K affiliate program spanning Rakuten, PAP and Tapfiliate with 1,200+ affiliates.",
-      "Managed ~$100K of influencer spend across H2 2025, negotiating retainer contracts that cut CPMs 25% while holding weekly content output flat.",
-      "Built and scaled an influencer program across Shorts, Avatar and Video Studio, onboarding 20+ AI/tech creators across YouTube, TikTok, Instagram and LinkedIn.",
-      "Engineered lead-generation workflows with Phantombuster, Apollo, Hunter.io and ContactFinder across 15+ niche ICPs.",
-    ],
-  },
-  {
-    company: "Societal",
-    role: "Co-Founder (Side Venture)",
-    period: "Jun 2024 — May 2025",
-    summary:
-      "Product and marketing for a student-event ticketing platform serving university societies across Pakistan.",
-    bullets: [
-      "Owned product testing and feature definition, speccing enhancements from organizer feedback; processed PKR 3M+ in ticket sales and maintained the sales and transaction records behind it.",
-      "Onboarded societies and event organizers onto digital ticketing, then wound the company down after concluding there was no viable profit structure — the analysis mattered more than the attachment.",
-    ],
-  },
-  {
-    company: "Nestlé",
-    role: "Sales Intern",
-    period: "Jul 2024 — Aug 2024",
-    summary: "Retail execution analysis across the Islamabad region.",
-    bullets: [
-      "Ran a chiller-utilisation study across ~100 retail stores covering 9 chiller sizes and 8 distribution channels against 30+ performance metrics.",
-      "Identified planogram non-compliance, SKU shortages and competitor infiltration through field research across key accounts, mini-marts and super grocers.",
-      "Built the Excel dashboards behind the findings and presented recommendations on retail execution and product placement to the Zonal Head.",
-    ],
-  },
-  {
-    company: "AIESEC in Pakistan",
-    role: "Data Manager",
-    period: "Feb 2024 — Jul 2024",
-    summary: "Centralised financial reporting across 13 local committees.",
-    bullets: [
-      "Consolidated financial data from 13 local committees into a single Excel-based reporting system, producing monthly summaries for national leadership with pivot tables and VLOOKUP.",
-      "Standardised data-entry protocols with local heads and ran training for committee finance leads — fixing the input quality rather than cleaning the same errors every month.",
-    ],
-  },
-];
-
-/**
- * Tableau Public dashboards.
- *
- * `view` is the Tableau *embed* path (workbook/sheet) — note this differs
- * from the profile URL you see in the browser. It drives both the embed
- * `src` and the thumbnail:
- *   embed     https://public.tableau.com/views/<view>
- *   thumbnail https://public.tableau.com/thumb/views/<view>
- *
- * TODO — the descriptions below were written from the titles alone. They
- * describe each dashboard's subject, and deliberately claim nothing about
- * what the data showed, since that isn't mine to assert. Rewrite them with
- * the actual finding where you have one; a finding beats a description.
- *
- * The whole section hides while this array is empty.
- */
-export type TableauProject = {
-  title: string;
-  description: string;
-  /** Embed path: "<workbook>/<sheet>". */
-  view: string;
-  /** The public-facing profile URL, for the "View on Tableau Public" link. */
-  url: string;
-  /**
-   * Locally-hosted preview image. Deliberately NOT hotlinked from
-   * public.tableau.com/thumb/... — that endpoint throttles browser-originated
-   * requests hard enough that the previews render broken. Refresh a preview by
-   * re-downloading it from that URL and committing the file. Omit the field
-   * and the card falls back to a plain panel; it never shows a broken image.
-   */
-  thumb?: string;
-};
-
-export const tableauProjects: TableauProject[] = [
-  {
-    title: "Traffic Analysis — Dashboard",
-    description:
-      "A multi-view dashboard built on traffic volume data, arranged so patterns across time periods and locations can be compared side by side rather than one chart at a time.",
-    view: "Traffic_Analysis1/TrafficDashboard",
-    thumb: "/shots/tableau/traffic-dashboard.png",
-    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/Traffic_Analysis1/TrafficDashboard",
-  },
-  {
-    title: "Traffic Analysis — Detail View",
-    description:
-      "An earlier pass over the same traffic dataset, kept as a single focused worksheet rather than a full dashboard.",
-    view: "Traffic_Analysis_17214236775320/Sheet4",
-    thumb: "/shots/tableau/traffic-detail.png",
-    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/Traffic_Analysis_17214236775320/Sheet4",
-  },
-  {
-    title: "Athens Rental Market",
-    description:
-      "Rental listings across Athens, mapped and segmented so price and availability can be read geographically instead of as a table of numbers.",
-    view: "Athens_rental_visualisation/Dashboard1",
-    thumb: "/shots/tableau/athens-rental.png",
-    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/Athens_rental_visualisation/Dashboard1",
-  },
-  {
-    title: "World Happiness Report",
-    description:
-      "National happiness scores visualised against the contributing factors reported alongside them, so country-level differences can be traced to specific components.",
-    view: "WorldHappiness_Zaeem/Dashboard2",
-    thumb: "/shots/tableau/world-happiness.png",
-    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/WorldHappiness_Zaeem/Dashboard2",
-  },
-  {
-    title: "World Happiness — Exploration",
-    description:
-      "A single-sheet exploration of the same World Happiness dataset, working through how different chart types change what the data appears to say.",
-    view: "MyWorldHappinessDemo_16895957074290/Sheet2",
-    thumb: "/shots/tableau/world-happiness-explore.png",
-    url: "https://public.tableau.com/app/profile/zaeem.ather/viz/MyWorldHappinessDemo_16895957074290/Sheet2",
-  },
-];
-
-export const tableauIntro =
-  "Self-directed visualisation work on public datasets. Each dashboard below is live and interactive — filter it, hover it, drill into it — or open it full-screen on Tableau Public.";
-
-/**
- * SQL learning projects.
- *
- * These followed AlexTheAnalyst's MySQL tutorial series rather than being
- * self-invented — say so plainly. "Followed a well-regarded tutorial, ran
- * it myself, and can explain every query" is a normal, positive thing to
- * show; claiming it as untutored original work is the one framing that
- * would actually damage credibility if noticed; this category of project is
- * widely recognized in data-analytics hiring.
- *
- * `findings` are real numbers, verified by independently re-running the
- * cleaning + EDA logic against the dataset — not quoted from the tutorial.
- */
-export type SqlProject = {
-  title: string;
-  description: string;
-  tools: string[];
-  findings: string[];
-  repo: string;
-};
-
-export const sqlProjects: SqlProject[] = [
-  {
-    title: "World Layoffs — Data Cleaning",
-    description:
-      "Cleaned a raw 2,361-row dataset in MySQL: deduplicated with window functions, standardized inconsistent industry and country labels, backfilled missing values via a self-join, and converted a text date column to a real date type.",
-    tools: ["MySQL", "Window functions", "CTEs"],
-    findings: [
-      "Row-level dedup requires partitioning on every column — partitioning on just a few looked right but flagged genuinely distinct layoff rounds as duplicates.",
-    ],
-    repo: "https://github.com/Zee-arch/sql-world-layoffs-analysis",
-  },
-  {
-    title: "World Layoffs — Exploratory Analysis",
-    description:
-      "Queried the cleaned dataset for layoff trends by company, industry, country, and time — including a year-by-year top-3 ranking and a rolling monthly total, both via window functions.",
-    tools: ["MySQL", "Window functions", "CTEs"],
-    findings: [
-      "384,659 layoffs recorded, March 2020 – March 2023 — and January 2023 alone accounts for ~85,000 of that, the single largest monthly spike in the dataset.",
-    ],
-    repo: "https://github.com/Zee-arch/sql-world-layoffs-analysis",
-  },
-];
-
-export const sqlIntro =
-  "Learning projects — I followed AlexTheAnalyst's MySQL tutorial series to build these, on the Kaggle “Layoffs 2022” dataset. Full attribution and the runnable SQL are in the repo.";
-
-/**
- * Excel → Power BI analytics projects.
- *
- * Unlike the SQL tutorials above, this one isn't a followed tutorial — the
- * dataset is synthetic but purpose-built: retention and expansion behavior
- * varies deliberately by acquisition-channel × company-size combination, so
- * the segmentation finding below is real and re-derivable from the data, not
- * a plausible-sounding claim. Every number in `findings` was independently
- * cross-checked three ways — a pandas validation script, the Excel formulas,
- * and the Power BI DAX measures — and they agree to the dollar.
- */
-export type ExcelProject = {
-  title: string;
-  period: string;
-  oneLiner: string;
-  description: string;
-  tools: string[];
-  findings: string[];
-  images: { src: string; alt: string; caption: string }[];
-  links: { label: string; href: string }[];
-};
-
-export const excelProjects: ExcelProject[] = [
-  {
-    title: "SaaS Subscription Retention & Revenue Analysis",
-    period: "2026",
-    oneLiner:
-      "Which customer segments are worth acquiring more of, and why — a synthetic SaaS dataset taken end-to-end through Excel, a strategy memo, and a live Power BI model.",
-    description:
-      "A 2,046-customer synthetic SaaS dataset (Jan 2023 – Jun 2026), generated with deliberately different retention and expansion profiles by acquisition-channel × company-size combination, so the segmentation story is real and traceable rather than decorative. The Excel workbook builds cohort retention grids, an NRR/GRR bridge, and a segment breakdown entirely on live `SUMIFS`/`COUNTIFS`/`AVERAGEIFS` formulas — nothing pasted as a static value. The same logic is then re-derived as a proper DAX star schema in Power BI, and the strategic read is written up as a 1-page memo aimed at a specific question: where should acquisition budget move, and where does the analysis stop and Finance's unit-economics work begin.",
-    tools: [
-      "Excel (live SUMIFS/COUNTIFS/AVERAGEIFS)",
-      "Power BI (DAX, star schema)",
-      "Python (synthetic dataset generation)",
-    ],
-    findings: [
-      "12-month logo retention ranges from 88.6% (Referral + Enterprise) to 28.4% (Paid Search + SMB) — a 3x spread the blended company-wide number (98.6% GRR / 101.1% NRR) hides completely.",
-      "Revenue retention among surviving cohorts climbs above 100% by month 24 — expansion from accounts that stick around outpaces contraction and churn, even as logo retention keeps declining. The two lines diverging is itself the finding.",
-      "Outbound Sales + Enterprise carries ~32% of current MRR ($420K of $1.32M) at 82% retention — the single largest and one of the healthiest segments in the book, and the one recommendation is explicit not to touch.",
-    ],
-    images: [
-      {
-        src: "/shots/saas-retention/retention-curves.png",
-        alt: "Line chart showing blended logo retention declining from 100% to roughly 40% over 40 months, while blended revenue retention climbs from 100% to over 160%.",
-        caption:
-          "Logo retention decays while revenue retention among survivors climbs past 160% — computed live via a DAX AVERAGEX measure.",
-      },
-      {
-        src: "/shots/saas-retention/segmentation-matrix.png",
-        alt: "Matrix table of 12-month logo retention and total MRR broken out by acquisition channel and company size segment.",
-        caption:
-          "12-month logo retention by acquisition channel × company size — Paid Search+SMB at 28%, Referral+Enterprise at 89%.",
-      },
-    ],
-    links: [
-      { label: "View on GitHub", href: "https://github.com/Zee-arch/saas-retention-analysis" },
-      { label: "Download the Excel workbook", href: "/files/SaaS_Retention_Analysis.xlsx" },
-      { label: "Read the memo", href: "/files/Segment_Acquisition_Memo.docx" },
-      { label: "Download the Power BI file (.pbix)", href: "/files/SaaS_Retention_Analysis.pbix" },
-    ],
-  },
-];
-
-export const excelIntro =
-  "Built end-to-end from a synthetic dataset — designed with a real segmentation story baked in, then proven three independent ways: Excel formulas, a Python validation script, and Power BI DAX measures, all agreeing to the dollar.";
-
-export const principles = [
-  {
-    label: "Judgment over prompting",
-    body: "AI drafts a lot of my queries and scaffolding. What I keep is deciding what to measure, what to trust, and what to verify independently. That division is the whole job.",
-  },
-  {
-    label: "A number isn't right because it computed",
-    body: "Every headline figure in the retention analysis was re-derived three independent ways — Excel formulas, a Python script, and Power BI DAX — before it went anywhere. They agree to the dollar.",
-  },
-  {
-    label: "The blended number is usually hiding something",
-    body: "98.6% company-wide retention looked healthy. Split by channel and company size, one segment was at 28%. The average was true and useless at the same time.",
-  },
-  {
-    label: "Refuse to dress up a guess",
-    body: "Estimates get labelled as estimates. A number without a source doesn't ship. It costs me tidier conclusions — it's also the reason the ones I do give can be trusted.",
-  },
-];
-
-/** What I'm looking for — sits above the contact block. */
-export const seeking = {
-  headline: "What I'm looking for",
-  body: "Data analyst, analytics engineering, and product associate roles — where the work is turning messy data into a number someone can act on, and being straight about what it does and doesn't support. I've spent two years as the person whose data other people's decisions ran on. I'm most useful where analysis has to survive contact with a real business call.",
 };
